@@ -7,11 +7,13 @@ dotenv.config({ path: path.resolve('config', '.env') });
 
 export const connectDB = async () => {
     try {
+        if (!process.env.DB_URL) {
+            throw new Error("DB_URL is not defined in environment variables. Check your config/.env file.");
+        }
         await mongoose.connect(process.env.DB_URL, { serverSelectionTimeoutMS: 3000 })
-        console.log("database connection successful");
+        console.log("\x1b[32m✔ Database connection successful\x1b[0m");
         await userModel.syncIndexes()
     } catch (error) {
-        console.log(`failed to connect the database ${error}`);
-
+        console.error(`\x1b[31m✖ Failed to connect to the database: ${error.message}\x1b[0m`);
     }
 }

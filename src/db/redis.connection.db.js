@@ -9,10 +9,10 @@ redisClient.on('error', (err) => console.error('Redis Client Error:', err));
 export const connectRedis = async () => {
     try {
         await redisClient.connect()
-        console.log(`datta bases connected REDIS DATABASAE `);
+        console.log(`\x1b[32m✔ Databases connected: REDIS DATABASE\x1b[0m`);
 
     } catch (error) {
-        console.log(`faild to connect REDIS DATABASAE  ${error}`);
+        console.error(`\x1b[31m✖ Failed to connect to REDIS DATABASE: ${error.message}\x1b[0m`);
 
     }
 }
