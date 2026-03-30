@@ -36,6 +36,14 @@ export const bootstrap = async () => {
     app.use('/user', userRouter)
     app.use('/message', messageRouter)
 
+    // Root Welcome Route for connectivity testing
+    app.get('/', (req, res) => {
+        return res.status(200).json({ 
+            message: "Welcome to Saraha API! Server is online and database is connected.",
+            status: "success"
+        });
+    });
+
     // Global Error Handling
     app.use(globalErrorHandler)
 
