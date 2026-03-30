@@ -1,4 +1,4 @@
-import { userModel, findOne, createOne, create, updateOne, findOneAndUpdate } from '../../db/index.js';
+import { userModel, findOne, createOne, findOneAndUpdate } from '../../db/index.js';
 import { compare } from 'bcrypt';
 import { generateHash, encrypt, sendEmail, ctrateNumberOtp, emailTemplet, compareHash, emailEvent } from '../../common/utils/index.js';
 import { BadRequestError, ConflictError, errorExecution, NotFoundError } from '../../common/utils/res/error.res.js';
@@ -319,9 +319,7 @@ export const login = async (inputs, issuer) => {
 
 export const signupWithGmail = async (body, issuer) => {
     const { idToken } = body
-    console.log({ idToken });
     const payload = await verify(idToken)
-    console.log({ payload });
 
     if (!payload.email_verified) throw errorExecution({ message: "Email is not verified" })
 
@@ -364,9 +362,7 @@ export const signupWithGmail = async (body, issuer) => {
 
 export const loginWithGmail = async (body, issuer) => {
     const { idToken } = body
-    console.log({ idToken });
     const payload = await verify(idToken)
-    console.log({ payload });
 
     if (!payload) throw errorExecution({ message: "Invalid credentials." })
 

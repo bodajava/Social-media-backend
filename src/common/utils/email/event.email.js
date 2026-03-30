@@ -8,7 +8,6 @@ emailEvent.on("sendEmail" , async(fn)=>{
     try {
         await fn()
     } catch (error) {
-        console.log(`faild in email event pleass try agean ${error}`);
-        
+        // faild in email event
     }
 })

@@ -18,7 +18,7 @@ export const sendEmail = async ({
 
   // Send an email using async/await
   (async () => {
-    const info = await transporter.sendMail({
+    await transporter.sendMail({
       from: `"SARAHA APP" <${process.env.EMAIL_APP}>`,
       to,
       cc,
@@ -27,7 +27,5 @@ export const sendEmail = async ({
       html,
       attachments
     });
-
-    console.log("Message sent:", info.messageId);
   })();
 }

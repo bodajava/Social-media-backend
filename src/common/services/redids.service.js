@@ -36,7 +36,7 @@ export const set = async ({ key, value, ttl } = {}) => {
 
     return await redisClient.set(key, data);
   } catch (error) {
-    console.log(`failed in redis set operation ${error}`);
+    // failed in redis set operation
   }
 };
 
@@ -49,7 +49,7 @@ export const update = async ({ key, value, ttl } = {}) => {
 
     return await set({ key, value, ttl });
   } catch (error) {
-    console.log(`failed in redis update operation ${error}`);
+    // failed in redis update operation
   }
 };
 
@@ -64,7 +64,7 @@ export const get = async (key) => {
       return data;
     }
   } catch (error) {
-    console.log(`failed in redis get operation ${error}`);
+    // failed in redis get operation
   }
 };
 
@@ -73,7 +73,7 @@ export const ttl = async (key) => {
   try {
     return await redisClient.ttl(key);
   } catch (error) {
-    console.log(`failed in redis ttl operation ${error}`);
+    // failed in redis ttl operation
   }
 };
 
@@ -82,7 +82,7 @@ export const exists = async (key) => {
   try {
     return await redisClient.exists(key);
   } catch (error) {
-    console.log(`failed in redis exists operation ${error}`);
+    // failed in redis exists operation
   }
 };
 
@@ -91,7 +91,7 @@ export const expire = async ({ key, ttl } = {}) => {
   try {
     return await redisClient.expire(key, ttl);
   } catch (error) {
-    console.log(`failed in redis expire operation ${error}`);
+    // failed in redis expire operation
   }
 };
 
@@ -110,7 +110,7 @@ export const mget = async (keys = []) => {
       }
     });
   } catch (error) {
-    console.log(`failed in redis mget operation ${error}`);
+    // failed in redis mget operation
   }
 };
 
@@ -119,7 +119,7 @@ export const keys = async (prefix = "") => {
   try {
     return await redisClient.keys(`${prefix}*`);
   } catch (error) {
-    console.log(`failed in redis keys operation ${error}`);
+    // failed in redis keys operation
   }
 };
 
@@ -128,7 +128,7 @@ export const del = async (key) => {
   try {
     return await redisClient.del(key);
   } catch (error) {
-    console.log(`failed in redis delete operation ${error}`);
+    // failed in redis delete operation
   }
 };
 
@@ -139,7 +139,7 @@ export const deleteKeys = async (keys = []) => {
 
     return await redisClient.del(keys);
   } catch (error) {
-    console.log(`failed in redis delete keys operation ${error}`);
+    // failed in redis delete keys operation
   }
 };
 
@@ -148,7 +148,7 @@ export const incr = async (key) => {
   try {
     return await redisClient.incr(key);
   } catch (error) {
-    console.log(`failed in redis incr operation ${error}`);
+    // failed in redis incr operation
   }
 };
 
@@ -157,6 +157,6 @@ export const decr = async (key) => {
   try {
     return await redisClient.decr(key);
   } catch (error) {
-    console.log(`failed in redis decr operation ${error}`);
+    // failed in redis decr operation
   }
 };

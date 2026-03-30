@@ -6,9 +6,6 @@ import cors from 'cors'
 import { resolve } from 'node:path';
 import messageRouter from './Module/message/message.controller.js';
 import helmet from 'helmet'
-import rateLimite from 'express-rate-limit'
-import axios from 'axios'
-import geoip from 'geoip-lite'
 
 /**
  * Bootstrap Application - Configures Express, Middleware, Database connections, and Routes.
@@ -16,7 +13,7 @@ import geoip from 'geoip-lite'
 export const bootstrap = async () => {
     const app = express()
     const port = parseInt(process.env.PORT) || 3000
-    
+
     // Security and Performance Middleware
     app.set('trust proxy', true)
     app.use(helmet())
@@ -38,7 +35,7 @@ export const bootstrap = async () => {
 
     // Root Welcome Route for connectivity testing
     app.get('/', (req, res) => {
-        return res.status(200).json({ 
+        return res.status(200).json({
             message: "Welcome to Saraha API! Server is online and database is connected.",
             status: "success"
         });
